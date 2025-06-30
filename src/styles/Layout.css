@@ -1,0 +1,49 @@
+
+@import "tailwindcss";
+
+html{
+    background-color: gray;
+}
+
+:root{
+    --primary-bg-color: #333;
+    --secondary-color: #e2b714;
+    --tertiary-color: #1f2022;
+    --iconstext-color: #646669;
+    --iconstext-color-hover: #d1d0c5;
+    --primary-text-color: white; 
+    --logo-color: #d1d0c5;
+    --selected-text-color: #e2b714;
+    --error-color: red;
+    --randomwords-color: #4a4c50;
+}
+
+.dark {
+    --primary-bg-color: #333;
+    --secondary-color: #e2b714;
+    --tertiary-color: #1f2022;
+    --iconstext-color: #646669;
+    --iconstext-color-hover: #d1d0c5;
+    --incorrect-leter-color: red;
+    --correct-letter-color: #d1d0c5;
+}
+
+.light {
+    --primary-bg-color: #ddd;
+    --secondary-color: #333;
+    --tertiary-color: #aaa7a7;
+    --iconstext-color: #4d4d4d;
+    --iconstext-color-hover: black;
+    --incorrect-leter-color: red;
+    --correct-letter-color: black;
+}
+
+.shadow {
+    --primary-bg-color: #000;
+    --secondary-color: #557d8d;
+    --tertiary-color: #101111;
+    --iconstext-color: #646669;
+    --iconstext-color-hover: #d1d0c5;
+    --incorrect-leter-color: red;
+    --correct-letter-color: #eee;
+}
