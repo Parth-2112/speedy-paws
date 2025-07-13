@@ -1,8 +1,14 @@
+import ButtonBar from "./ButtonBar";
 
 const Home = () => {
-  return (
-    <div className="bg-amber-50 border-4 border-amber-200">Home</div>
-  )
+  
+  return(
+    <div className="bg-(--primary-bg-color) ">
+        
+      <ButtonBar/>
+   
+    </div>
+  );
 }
 
-export default Home
+export default Home;
