@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Settings } from "../assets/Icons"; 
+import { Settings } from "../assets/HeaderIcons"; 
 import {Quote, Clock, LetterA, Mountain} from "../assets/GameModeIcons"
 import { useGameMode} from "../context/GameModeContext";
 import type { GameMode } from "../context/GameModeContext";
@@ -43,7 +43,7 @@ const CustomButtonBar: React.FC<buttonBarProps> = ({buttons, selectedButton, onB
                     >
                         <div className=" gap-1  flex text-[0.8rem]">
                             <div className="w-3 flex items-center justify-center">
-                                {button.icon}
+                                {button.icon}   
                             </div>
                                 {button.label} 
                         </div>
@@ -85,9 +85,14 @@ const ButtonBar = () => {
             {
                 modal &&
                 <div className="w-full md:hidden">
-                    <div className="w-[100vw] h-[100vh] absolute inset-0 bg-white opacity-5 z-10" onClick={toggleModal}/>
+                    <div 
+                        className={`w-[100vw] h-[100vh] absolute inset-0 bg-white opacity-5`} 
+                        onClick={toggleModal}
+                    />
                     
-                    <div className="w-[90%] relative bg-(--primary-bg-color) mx-auto z-30 opacity-100 rounded-[8px] py-5 mt-20">
+                    <div 
+                        className={`Phone-Modal w-[70%] fixed left-1/2 -translate-x-1/2 bg-(--primary-bg-color) z-30 rounded-[8px] py-5 mt-20 }`}
+                    >
                         <PhoneSettingsModal
                             buttons={buttons}
                         />

@@ -1,8 +1,10 @@
 
 const Footer = () => {
     return(
-        <div className="text-(--primary-text) bg-(--primary-color) h-[10vh]">
-            Footer
+        <div className="text-(--iconstext-color) bg-(--primary-bg-color) h-[10vh] flex flex-col items-center justify-center gap-2">
+            <div>tab - restart test</div>
+            <div></div>
+            <div>chage theme volume </div>
         </div>
     )
 }

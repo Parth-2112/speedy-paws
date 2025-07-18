@@ -1,6 +1,6 @@
 // import paw from '/pawsvg.svg';
 // import Dada from '/Dada.svg';
-import { KeyboardIcon, KeyboardSecondIcon, Profile, Bell, Crown, Info, Settings} from '../assets/Icons';
+import { KeyboardIcon, KeyboardSecondIcon, Profile, Bell, Crown, Info, Settings} from '../assets/HeaderIcons';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
 
         <div className="text-(--primary-text-color) bg-(--primary-bg-color) flex gap-2 items-center w-full px-2 fill-(--iconstext-color)">
 
-            <Link to='/' className='w-10 pt-1 flex items-center hover:fill-(--iconstext-color-hover)'> 
+            <Link to='/' className='w-10 pt-1 flex items-center hover:fill-(--iconstext-color-hover) -ml-2'> 
                 <KeyboardIcon/>
             </Link>
 
@@ -23,12 +23,12 @@ const Header = () => {
                 <Link to='/' className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Home'> 
                     <KeyboardSecondIcon/>
                 </Link>
-                <button className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Leaderboard'> 
+                <Link to='/leaderboard' className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Leaderboard'> 
                     <Crown/>
-                </button>
-                <div className='w-1.5 h-auto flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer'> 
+                </Link>
+                <Link to='/about' className='w-1.5 h-auto flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer'> 
                     <Info/>
-                </div>
+                </Link>
                 <Link to='/settings' className='w-4.5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer'> 
                     <Settings/>
                 </Link>
