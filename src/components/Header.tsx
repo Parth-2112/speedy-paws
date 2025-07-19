@@ -1,16 +1,24 @@
 // import paw from '/pawsvg.svg';
 // import Dada from '/Dada.svg';
-import { KeyboardIcon, KeyboardSecondIcon, Profile, Bell, Crown, Info, Settings} from '../assets/HeaderIcons';
+import { KeyboardSecondIcon, Profile, Bell, Crown, Info, Settings, PawIcon} from '../assets/HeaderIcons';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import NotificationModal from '../modal/NotificationModal';
 
 const Header = () => {
     
+    const [notificationModal, setNotificationModal] = useState(false);
+    const toggleModal = () => {
+        setNotificationModal(!notificationModal);
+    }
+
     return(
 
         <div className="text-(--primary-text-color) bg-(--primary-bg-color) flex gap-2 items-center w-full px-2 fill-(--iconstext-color)">
 
-            <Link to='/' className='w-10 pt-1 flex items-center hover:fill-(--iconstext-color-hover) -ml-2'> 
-                <KeyboardIcon/>
+            <Link to='/' className='w-10 pt-1 flex items-center fill-(--secondary-color) -ml-2'> 
+                {/* <KeyboardIcon/> */}
+                <PawIcon/>
             </Link>
 
             <div className='hidden md:block text-4xl hover:fill-(--iconstext-color-hover)'>
@@ -37,9 +45,7 @@ const Header = () => {
             <div className='flex ml-auto items-center gap-2 md:gap-6 pt-3'>
                 
                 <button 
-                    className='w-6 h-auto flex items-center cursor-pointer hover:fill-(--iconstext-color-hover)' onClick={()=>{
-                    alert("This is a functioning button");
-                    }}
+                    className='w-6 h-auto flex items-center cursor-pointer hover:fill-(--iconstext-color-hover)' onClick={()=>toggleModal()}
                     title='Notification'
                 >
                     <Bell/>
@@ -49,7 +55,16 @@ const Header = () => {
                 </Link>
             
             </div>
-
+            {
+                notificationModal &&
+                <div className="absolute inset-0 z-10">
+                    <div 
+                        className=' min-h-[100vh] min-w-[100vw] bg-black opacity-40'
+                        onClick={()=>toggleModal()}
+                    />
+                    <NotificationModal/>
+                </div>
+            }
         </div>
     );
 }

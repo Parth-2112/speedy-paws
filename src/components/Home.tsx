@@ -5,7 +5,7 @@ const Home = () => {
 
   return(
     
-    <div className="bg-(--primary-bg-color) ">
+    <div className="bg-(--primary-bg-color)">
 
       <ButtonBar/>
       <TypingArea/>
