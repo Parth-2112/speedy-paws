@@ -16,19 +16,19 @@ const Header = () => {
 
         <div className="text-(--primary-text-color) bg-(--primary-bg-color) flex gap-2 items-center w-full px-2 fill-(--iconstext-color)">
 
-            <Link to='/' className='w-10 pt-1 flex items-center fill-(--secondary-color) -ml-2'> 
+            <Link to='/' className='w-10 pt-1 flex items-center fill-(--secondary-color) -ml-2' reloadDocument={true} title='Home'> 
                 {/* <KeyboardIcon/> */}
                 <PawIcon/>
             </Link>
 
-            <div className='hidden md:block text-4xl hover:fill-(--iconstext-color-hover)'>
+            <div className='hidden md:block text-4xl text-(--iconstext-color-hover)'>
                 speedypaws 
             </div>
              
 
             <div className="w-[50%] flex items-center gap-6 ml-6 pt-3">
                 
-                <Link to='/' className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Home'> 
+                <Link to='/' className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Home' reloadDocument={true}> 
                     <KeyboardSecondIcon/>
                 </Link>
                 <Link to='/leaderboard' className='w-5 flex items-center hover:fill-(--iconstext-color-hover) cursor-pointer' title='Leaderboard'> 

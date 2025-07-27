@@ -11,12 +11,12 @@ html{
     --tertiary-color: #0f0f10;
     --iconstext-color: #646669;
     --iconstext-color-hover: #d1d0c5;
-    --primary-text-color: white; 
-    --logo-color: #d1d0c5;
+    --correct-letter-color: #d1d0c5;
     --selected-text-color: #e2b714;
-    --error-color: red;
+    --incorrect-letter-color: red;
     --randomwords-color: #4a4c50;
 }
+
 
 .dark {
     --primary-bg-color: #333;
@@ -24,7 +24,7 @@ html{
     --tertiary-color: #1f2022;
     --iconstext-color: #646669;
     --iconstext-color-hover: #d1d0c5;
-    --incorrect-leter-color: red;
+    --incorrect-letter-color: red;
     --correct-letter-color: #d1d0c5;
 }
 
