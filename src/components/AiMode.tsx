@@ -1,3 +1,5 @@
+
+    // const apiKey = process.env.GEMINI_API_KEY;
     // const fetchWords = async () => {
     //     try {
     //         const response = await fetch(

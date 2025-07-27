@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const TypingArea = () => {
 
-    // const apiKey = "AIzaSyBG6MnUOpg7moXOepVEi7sI68FS7rubnso";
     const {gameMode} = useGameMode();
     const [words, setWords] = useState("This is a sample text and is being used for text etc and this is it in the best way possible be willing to be done in this way");
 
