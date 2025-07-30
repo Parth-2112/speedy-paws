@@ -6,6 +6,8 @@ const TypingArea = () => {
 
     const {gameMode} = useGameMode();
     const [words, setWords] = useState("This is a sample text and is being used for text etc and this is it in the best way possible be willing to be done in this way");
+    // const [gameTimer, setTimer] = useState(30 * 1000); // 30 seconds in milliseconds
+    // window.timer = null;
 
     const addClass = (element: HTMLElement, className: string) => {
         element.classList.add(className);    
@@ -56,7 +58,7 @@ const TypingArea = () => {
         if (!gameElement) return;
 
         newGame(); // Call the function to generate new words
-
+        
         
         const currLetterForCursor = document.querySelector(".letter.current") as HTMLElement;
         if(currLetterForCursor) {
@@ -140,14 +142,24 @@ const TypingArea = () => {
                     if(previousWord) {
                         addClass(previousWord, "current");
                         addClass(previousWord.lastChild as HTMLElement, "current");
-                        removeClass(previousWord.lastChild as HTMLElement, "incorrect");
-                        removeClass(previousWord.lastChild as HTMLElement, "correct");
+                        const prev = previousWord.lastChild as HTMLElement;
+                        if(prev?.classList.contains("extra-letter")){
+                            previousWord.lastChild?.remove();
+                        }
+                        else{
+                            removeClass(previousWord.lastChild as HTMLElement, "incorrect");
+                            removeClass(previousWord.lastChild as HTMLElement, "correct");
+                        }
                     }    
                 }
                 else if(currentLetter && !isFirstLetter) {
                     //move back one letter and invalidate the current letter 
                     removeClass(currentLetter, "current");
                     const previousLetter = currentLetter.previousSibling as HTMLElement | null;
+                    if(currentLetter.classList.contains("extra-letter")){
+                        addClass(previousLetter as HTMLElement, "current");
+                        currentLetter.remove();
+                    }
                     if(previousLetter) {
                         addClass(previousLetter, "current");
                         removeClass(previousLetter, "incorrect");
@@ -156,32 +168,52 @@ const TypingArea = () => {
                 }
                 else if(currentLetter === null) {
                     if(currentWord){
-                        addClass(currentWord.lastChild as HTMLElement, "current");
-                        removeClass(currentWord.lastChild as HTMLElement, "incorrect");
-                        removeClass(currentWord.lastChild as HTMLElement, "correct");
+                        const prev = currentWord.lastChild as HTMLElement | null;
+                        if(prev?.classList.contains("extra-letter")){
+                            prev.remove();
+                        }
+                        else{
+                            addClass(currentWord.lastChild as HTMLElement, "current");
+                            removeClass(currentWord.lastChild as HTMLElement, "incorrect");
+                            removeClass(currentWord.lastChild as HTMLElement, "correct");
+                        }
                     }
                 }
             }
             
-            // For moving the cursor
-
+            
+            // Moving the lines 
+    
             const nextWord = document.querySelector(".word.current") as HTMLElement | null;
+            const gameBox = document.getElementById("game");
+            const wordsContainer = document.getElementById("words");
+
+            if (gameBox && nextWord && wordsContainer) {
+                const gameBoxTop = gameBox.getBoundingClientRect().top;
+                const wordTop = nextWord.getBoundingClientRect().top;
+                
+                if (wordTop - gameBoxTop >= 70) { // If word is below visible area (tweak 70px as needed)
+                    const currentMarginTop = parseInt(getComputedStyle(wordsContainer).marginTop || "0");
+                    wordsContainer.style.marginTop = (currentMarginTop - 35) + "px"; // scroll up one line height (35px)
+                }
+            }
+
+
+            // For moving the cursor
             const nextLetter = document.querySelector(".letter.current") as HTMLElement | null;
             const cursor = document.getElementById("cursor");
+            const wordsMarginTop = parseInt(getComputedStyle(wordsContainer!).marginTop || "0");
 
             if (cursor && nextWord) {
-                
                 if (nextLetter) {
-                    // Normal case: there's a current letter to follow
-                    cursor.style.top = nextLetter.offsetTop + "px";
+                    cursor.style.top = (nextLetter.offsetTop + wordsMarginTop) + "px";
                     cursor.style.left = nextLetter.offsetLeft + "px";
                 } else {
-                    // No current letter — position cursor after last letter in the word
                     const letters = nextWord.querySelectorAll(".letter");
                     const lastLetter = letters[letters.length - 1] as HTMLElement;
 
                     if (lastLetter) {
-                        cursor.style.top = lastLetter.offsetTop + "px";
+                        cursor.style.top = (lastLetter.offsetTop + wordsMarginTop) + "px";
                         cursor.style.left = (lastLetter.offsetLeft + lastLetter.offsetWidth) + "px";
                     }
                 }
@@ -203,21 +235,21 @@ const TypingArea = () => {
 
         <div className="flex-1 flex flex-col justify-center">
             
-            <div className="timer text-(--secondary-color) ml-1">
+            <div className="timer text-(--secondary-color) ml-1 ">
                 0
             </div>
             <div 
-                className="game outline-none h-[105px] leading-[35px] w-full relative overflow-hidden" 
+                className="game outline-none h-[105px] leading-[35px] w-full relative overflow-hidden m-0 p-0 " 
                 tabIndex={0}
                 id="game"
             >
                 
                 <div 
-                    className="words text-[20px]" 
+                    className="words text-[20px] m-0 p-0" 
                     id="words"
                 />
                 <div
-                    className="w-[2px] h-[1.6rem] bg-(--secondary-color) absolute inset-0"
+                    className="w-[2px] h-[1.6rem] bg-(--secondary-color) absolute inset-0 m-0 p-0"
                     id="cursor"
                 />
                 

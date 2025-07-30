@@ -66,9 +66,8 @@ const ButtonBar = () => {
     }
 
     return(
-        <div>
-
-            <div className="w-[60%] mx-auto my-4 flex items-center justify-center gap-3 md:hidden">
+        <div className="border-2 border-yellow-400">
+            <div className="w-[60%] mx-auto my-4 flex items-center justify-center gap-3 md:hidden ">
                 <button 
                     className="font-medium fill-(--iconstext-color) cursor-pointer flex gap-2 items-center bg-(--tertiary-color) text-(--iconstext-color) hover:text-(--iconstext-color-hover) hover:fill-(--iconstext-color-hover) px-3 py-1 rounded-[6px]"
                     onClick={toggleModal}
@@ -125,7 +124,6 @@ const ButtonBar = () => {
                 
 
             </div>
-
         </div>
   )
 }

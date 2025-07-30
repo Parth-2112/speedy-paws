@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
 
 .words{
     filter: blur(4px);
@@ -6,6 +7,12 @@
 
 .game:focus .words{
     filter: blur(0px);  
+}
+
+.game{
+    /* box-sizing: border-box; */
+    font-family: 'roboto Mono', monospace;
+    /* border: 1px solid var(--secondary-color); */
 }
 
 .game:focus .focus-error{
@@ -19,9 +26,15 @@
 
 div .word{
     display: inline-block;
-    font-family: 'roboto Mono', monospace;
     margin: 0 5px;
     color: var(--iconstext-color);
+    /* font-family: 'roboto Mono', monospace; */
+    /* border:solid 1px blue; */
+}
+
+.letter{
+    margin: 0;
+    padding: 0;
 }
 
 .correct {
